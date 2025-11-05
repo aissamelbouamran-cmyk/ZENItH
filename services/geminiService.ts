@@ -3,7 +3,7 @@ import { GoogleGenAI } from "@google/genai";
 
 // IMPORTANT: This is a placeholder for a secure API key management solution.
 // In a real application, this should be handled via environment variables and backend requests.
-const API_KEY = process.env.API_KEY;
+const API_KEY = "AIzaSyCwElXMtBwHmJIK6HwPa0XkhU3hHyc4jiM";
 
 if (!API_KEY) {
   console.warn("Gemini API key not found. AI features will be disabled. Please set the API_KEY environment variable.");
