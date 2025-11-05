@@ -4,10 +4,9 @@ import type { View } from '../types';
 
 interface SidebarProps {
   currentView: View;
-  setCurrentView: (view: View) => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView }) => {
+const Sidebar: React.FC<SidebarProps> = ({ currentView }) => {
   const navItems: { id: View; name: string; icon: React.ReactNode }[] = [
     { id: 'planner', name: 'Planner', icon: <CalendarIcon /> },
     { id: 'analytics', name: 'Analytics', icon: <ChartIcon /> },
@@ -31,9 +30,9 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView }) => {
       <div className="flex-1 flex flex-col justify-between">
         <nav className="px-2 sm:px-4 py-4 space-y-2">
           {navItems.map((item) => (
-            <button
+            <a
               key={item.id}
-              onClick={() => setCurrentView(item.id)}
+              href={`#${item.id}`}
               className={`w-full flex items-center justify-center sm:justify-start p-3 rounded-lg text-sm font-medium transition-colors duration-200 ${
                 currentView === item.id
                   ? 'bg-indigo-500 text-white'
@@ -42,7 +41,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView }) => {
             >
               {item.icon}
               <span className="hidden sm:inline ml-4">{item.name}</span>
-            </button>
+            </a>
           ))}
         </nav>
         <div>
@@ -51,9 +50,9 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView }) => {
             </div>
             <nav className="px-2 sm:px-4 py-4 space-y-2">
                 {legalItems.map((item) => (
-                    <button
+                    <a
                         key={item.id}
-                        onClick={() => setCurrentView(item.id)}
+                        href={`#${item.id}`}
                         className={`w-full flex items-center justify-center sm:justify-start p-3 rounded-lg text-sm font-medium transition-colors duration-200 ${
                         currentView === item.id
                             ? 'bg-indigo-500 text-white'
@@ -62,7 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView }) => {
                     >
                         {item.icon}
                         <span className="hidden sm:inline ml-4">{item.name}</span>
-                    </button>
+                    </a>
                 ))}
             </nav>
         </div>
